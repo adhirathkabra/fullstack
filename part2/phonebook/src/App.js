@@ -20,6 +20,12 @@ const App = () => {
       .then(initialPersons => {
         setPersons(initialPersons)
       })
+      .catch(error => {
+        setError(error.response.data.error)
+        setTimeout(() => {
+          setError(null)
+        }, 3000)
+      })
   }, [])
 
   const handleInputName = (event) => {
@@ -73,6 +79,12 @@ const App = () => {
           setNotif(`Added ${personObject.name}`)
           setTimeout(() => {
             setNotif(null)
+          }, 3000)
+        })
+        .catch(error => {
+          setError(error.response.data.error)
+          setTimeout(() => {
+            setError(null)
           }, 3000)
         })
       setNewName('')
